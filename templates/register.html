@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/background.jpeg') }}");
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            height: 500px;
+            width: 350px;
+            position: fixed;
+            text-align: center;
+            padding: 20px;
+            color: black;
+            margin: 150px;
+            margin-left: 1000px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .flash-messages {
+            margin-top: 5px;
+            margin-left: 550px;
+            margin-right: 5px;
+            margin-bottom: 20px;
+            width: 500px;
+            justify-content: center;
+            background: #FFFDD0;
+        }
+
+        .alert {
+            position: relative;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 30px;
+            height: 30px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message[1] }}">
+            <span>{{ message }}</span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h1>Welcome to Churn Prediction in Telecommunication Industry</h1>
+        <p>Please create your account..</p>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label for="username">Username:</label>
+            {{ form.username(class="form-control", placeholder="Enter username") }}
+
+            <label for="password">Password:</label>
+            {{ form.password(class="form-control", placeholder="Enter password") }}
+
+            <label for="confirm_password">Confirm Password:</label>
+            {{ form.confirm_password(class="form-control", placeholder="Enter password again") }}
+
+            {{ form.submit(class="btn btn-primary") }}
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+        </form>
+    </div>
+</body>
+
+</html>

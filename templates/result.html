@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2,
+        h3,
+        p {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 60%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>Churn Prediction Result</h2>
+
+    <table border="1">
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>customerID</td>
+            <td>{{ customerID }}</td>
+        </tr>
+        <tr>
+            <td>gender</td>
+            <td>{{ gender }}</td>
+        </tr>
+        <tr>
+            <td>SeniorCitizen</td>
+            <td>{{ SeniorCitizen }}</td>
+        </tr>
+        <tr>
+            <td>Dependents</td>
+            <td>{{ Dependents }}</td>
+        </tr>
+        <tr>
+            <td>Partner</td>
+            <td>{{ Partner }}</td>
+        </tr>
+        <tr>
+            <td>Tenure</td>
+            <td>{{ tenure }}</td>
+        </tr>
+        <tr>
+            <td>PhoneService</td>
+            <td>{{ PhoneService }}</td>
+        </tr>
+        <tr>
+            <td>MultipleLines</td>
+            <td>{{ MultipleLines }}</td>
+        </tr>
+        <tr>
+            <td>InternetService</td>
+            <td>{{ InternetService }}</td>
+        </tr>
+        <tr>
+            <td>OnlineSecurity</td>
+            <td>{{ OnlineSecurity }}</td>
+        </tr>
+        <tr>
+            <td>OnlineBackup</td>
+            <td>{{ OnlineBackup }}</td>
+        </tr>
+        <tr>
+            <td>DeviceProtection</td>
+            <td>{{ DeviceProtection }}</td>
+        </tr>
+        <tr>
+            <td>TechSupport</td>
+            <td>{{ TechSupport }}</td>
+        </tr>
+        <tr>
+            <td>StreamingTV</td>
+            <td>{{ StreamingTV }}</td>
+        </tr>
+        <tr>
+            <td>StreamingMovies</td>
+            <td>{{ StreamingMovies }}</td>
+        </tr>
+        <tr>
+            <td>Contract</td>
+            <td>{{ Contract }}</td>
+        </tr>
+        <tr>
+            <td>PaperlessBilling</td>
+            <td>{{ PaperlessBilling }}</td>
+        </tr>
+        <tr>
+            <td>PaymentMethod</td>
+            <td>{{ PaymentMethod }}</td>
+        </tr>
+        <tr>
+            <td>MonthlyCharges</td>
+            <td>{{ MonthlyCharges }}</td>
+        </tr>
+        <tr>
+            <td>TotalCharges</td>
+            <td>{{ TotalCharges }}</td>
+        </tr>
+        <tr>
+            <td>Feedback</td>
+            <td>{{ Feedback }}</td>
+        </tr>
+        <tr>
+            <td>ChurnCategory</td>
+            <td>{{ ChurnCategory }}</td>
+        </tr>
+    </table>
+
+
+    <h3>Prediction Result</h3>
+    <p>Prediction: {{result}} </p>
+
+    <form action="{{ url_for('view_pdf') }}" method="get">
+        <button type="submit">View Report</button>
+    </form>
+
+</body>
+
+</html>

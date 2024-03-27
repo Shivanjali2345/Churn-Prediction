@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-image: url("{{ url_for('static', filename='images/background.jpeg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: black;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .flash-messages {
+            margin-top: 5px;
+            margin-left: 550px;
+            margin-right: 5px;
+            margin-bottom: 20px;
+            width: 500px;
+            justify-content: center;
+            background: #FFFDD0;
+        }
+
+        .alert {
+            position: relative;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form method="POST" action="/customer-details">
+                <!-- Update the action to point to the route for fetching customer details -->
+                {{ form.hidden_tag() }}
+                <label for="customerID">Customer ID:</label>
+                <input type="text" id="customerID" name="customerID" required> <!-- Input field for customerId -->
+                <button type="submit">Get Details!</button>
+            </form>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message[1] }}">
+            <span>{{ message }}</span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <h2>Churn Prediction Parameters </h2>
+    <h2 style="margin-left: 1139px;"><a href="#" id="openModal" style="text-decoration: underline; color: red;">Get
+            specific
+            details
+            here!</a></h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <label for="customerID">customerID:</label>
+        {{form.customerID(required=True)}}
+
+        <label for="gender">Gender:</label>
+        {{ form.gender(required=True) }}
+
+        <label for="SeniorCitizen">Senior Citizen:</label>
+        {{ form.SeniorCitizen(required=True) }}
+
+        <label for="Dependents">Dependents:</label>
+        {{ form.Dependents(required=True) }}
+
+
+        <label for="Partner">Partner:</label>
+        {{ form.Partner(required=True) }}
+
+        <label for="tenure">tenure:</label>
+        {{ form.tenure(required=True) }}
+
+        <label for="PhoneService">PhoneService:</label>
+        {{ form.PhoneService(required=True) }}
+
+
+        <label for="MultipleLines">MultipleLines :</label>
+        {{ form.MultipleLines(required=True) }}
+
+        <label for="InternetService">InternetService:</label>
+        {{ form.InternetService(required=True) }}
+
+        <label for="OnlineSecurity">OnlineSecurity:</label>
+        {{ form.OnlineSecurity(required=True) }}
+
+        <label for="OnlineBackup">OnlineBackup</label>
+        {{ form.OnlineBackup(required=True) }}
+
+        <label for="DeviceProtection">DeviceProtection</label>
+        {{ form.DeviceProtection(required=True) }}
+
+        <label for="TechSupport">TechSupport</label>
+        {{ form.TechSupport(required=True) }}
+
+        <label for="StreamingTV">StreamingTV</label>
+        {{ form.StreamingTV(required=True) }}
+
+        <label for="StreamingMovies">StreamingMovies</label>
+        {{ form.StreamingMovies(required=True) }}
+
+        <label for="Contract">Contract</label>
+        {{ form.Contract(required=True) }}
+
+        <label for="PaperlessBilling">PaperlessBilling</label>
+        {{ form.PaperlessBilling(required=True) }}
+
+        <label for="PaymentMethod">PaymentMethod</label>
+        {{ form.PaymentMethod(required=True) }}
+
+        <label for="MonthlyCharges">MonthlyCharges</label>
+        {{ form.MonthlyCharges(required=True) }}
+
+        <label for="TotalCharges">TotalCharges</label>
+        {{ form.TotalCharges(required=True) }}
+
+        <label for="Feedback">Feedback</label>
+        {{ form.Feedback(required=True) }}
+
+        <label for="ChurnCategory">Select issues category you have face :</label>
+        {{ form.ChurnCategory() }}
+        <button type="submit">Get Result</button>
+    </form>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
