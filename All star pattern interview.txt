@@ -1,0 +1,233 @@
+/*#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,j;
+	for(i=1;i<=3;i++)
+	{
+		for(j=1;j<=i;j++)
+		{
+			printf("* ");
+		}
+		printf("\n");
+	}
+	getch();
+}
+*/
+/*#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,j;
+	for(i=1;i<=5;i++)
+	{
+		for(j=5;j>=i;j--)
+		{
+			printf("* ");
+		}
+		printf("\n");
+	}
+}
+*/
+/*#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,j,k;
+	for(i=1;i<=5;i++)
+	{
+		for(j=i;j<5;j++) //i che value vadel ani space kami hot jatil
+		{
+			printf(" ");
+		}
+		for(k=1;k<=i;k++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	getch();
+	
+}
+*/
+/*#include<stdio.h>
+void main()
+{
+	int i,j,k;
+	for(i=1;i<=5;i++)
+	{
+		for(j=1;j<i;j++)
+		{
+			printf(" ");
+		}
+		for(k=i;k<=5;k++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	
+}
+*/
+/*#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i,j;
+	for(i=1;i<=3;i++)
+	{
+		for(j=1;j<=3;j++)
+		{
+			if(i==1 || i==3 || j==1 || j==3)
+			{
+				printf("*");}
+			else{
+			
+				printf(" ");
+		   } 
+			
+		}
+		printf("\n");
+	}
+		getch();
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j;
+		for(i=1;i<=5;i++)
+		{
+			for(j=1;j<=i;j++)
+			{
+				printf("%d",i);
+			}
+			printf("\n");
+		
+		}
+		getch();
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j;
+		for(i=1;i<=5;i++)
+		{
+			for(j=1;j<=i;j++)
+			{
+				printf("%d",j);
+			}
+			printf("\n");
+		}
+		getch();
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j;
+		int count=1;
+		for(i=1;i<=3;i++)
+		{
+			for(j=1;j<=i;j++)
+			{
+				printf("%d",count);
+				count++;
+			}
+			printf("\n");
+		}
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j;
+		int count='A';
+		for(i='A';i<='E';i++)
+		{
+			for(j='A';j<=i;j++)
+			{
+				printf("%c",count);
+				count++;
+			}
+			printf("\n");
+		}
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j ,count=0;
+		for(i='a';i<='c';i++)
+		{
+			for(j='a';j<=i;j++)
+			{
+				printf("%c",i);
+			}
+			printf("\n");
+		}
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j ,count=0;
+		for(i='a';i<='c';i++)
+		{
+			for(j='a';j<=i;j++)
+			{
+				printf("%c",j);
+			}
+			printf("\n");
+		}
+	}
+	*/
+	/*#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j ,count=0;
+		int len;
+		char str[]="shivanjali";
+		len=strlen(str);
+		for(i=0;i<=len;i++)
+		{
+			for(j=0;j<=i;j++)
+			{
+				printf("%c",str[j]);
+			}
+			printf("\n");
+		}
+		getch();
+	}
+	*/
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int i,j,k;
+		for(i=1;i<=5;i++)
+		{
+			for(j=5;j>i;j--)
+			{
+				printf(" ");
+			}
+			for(k=1;k<=i;k++)
+			{
+				printf("*");
+			}
+			printf("\n");
+		}
+		getch();
+	}
+	
+	
+	
+	
